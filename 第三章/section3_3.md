@@ -6,12 +6,15 @@
 
 &emsp;&emsp;为了对给定类型的进程（例如在可运行状态的所有进程）进行有效的搜索，内核建立了几个进程链表。每个进程链表由指向进程PCB的指针组成。在task_struct结构中有如下的定义：
 
-    struct task_struct {
-    …
-	    struct list_head tasks;
-        char comm[TASK_COMM_LEN];/*可执行程序的名字（带路径）*/
-    …
-    }
+	struct task_struct {
+		…
+		struct list_head tasks;
+        	char comm[TASK_COMM_LEN]; /* executable name excluding path
+                                           - access with [gs]et_task_comm (which lock
+                                             it with task_lock())
+                                           - initialized normally by setup_new_exec */
+		…
+	}
 
 &emsp;&emsp;因此，如图3.8的一个双向循环链表把所有进程联系起来，我们叫它为进程链表。
 
