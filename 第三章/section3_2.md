@@ -57,7 +57,7 @@
 
 &emsp;&emsp;SIGTTOU-后台进程请求输出
 
-&emsp;&emsp;**僵死状态（TASK_ZOMBIE）：**进程执行结束但尚未消亡的一种状态。此时，进程已经结束且释放大部分资源，但尚未释放其PCB。
+&emsp;&emsp;僵死状态（TASK_ZOMBIE）：进程执行结束但尚未消亡的一种状态。此时，进程已经结束且释放大部分资源，但尚未释放其PCB。
 
  ![](http://i.imgur.com/MXi5fkQ.png)
 图3.5 给出Linux进程状态的转换及其所调用的内核函数。
