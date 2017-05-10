@@ -37,8 +37,8 @@
                count++;
                printk("%d--->%s\n",p->pid,p->comm);
                }
-      printk(the number of process is:%d\n",count);
-      return 0;
+      	printk(the number of process is:%d\n",count);
+      	return 0;
     }
 
 &emsp;&emsp;需要注意的是，在一个拥有大量进程的系统中通过重复来遍历所有的进程是非常耗费时的。
@@ -77,9 +77,9 @@
 &emsp;&emsp;就绪队列容纳了系统中所有准备运行的进程， 在task_struct结构中定义了双向链表。
 
     struct task_struct{
-    …
-    struct list_head run_list;
-    …
+   	…
+    	struct list_head run_list;
+    	…
     }
 
 
@@ -97,7 +97,7 @@
     static inline void move_last_runqueue(struct task_struct * p)
     {
        list_del(&p->run_list);
-      list_add_tail(&p->run_list, &runqueue_head);
+       list_add_tail(&p->run_list, &runqueue_head);
     };
 
 &emsp;&emsp;以上讲述的进程组织方式，实际上大都是数据结构中数据的组织方式，因此，读者在阅读本书或者源代码的过程中，首先抓住事物的本质，找出熟悉的知识，然后，再去体会或应用已有的知识解决问题。
